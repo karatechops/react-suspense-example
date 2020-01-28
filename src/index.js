@@ -1,11 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-// ↓↓↓ 👋 Update this line to change the lesson number ↓↓↓
-import Lesson from "./lessons/complete/app";
+import Content from "./app";
 
 function App() {
-  return <Lesson />;
+  return <Content />;
 }
 
 const rootElement = document.getElementById("root");

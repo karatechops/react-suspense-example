@@ -1,4 +1,3 @@
-// copied from https://reactjs.org/docs/error-boundaries.html
 import React from "react";
 
 export default class ErrorBoundary extends React.Component {
@@ -7,21 +6,25 @@ export default class ErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  static defaultProps = {
-    fallback: <h1>Something went wrong.</h1>
-  };
-
   static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
     return { hasError: true };
   }
 
   componentDidCatch(error, errorInfo) {
-    console.log(error, errorInfo);
+    // You can also log the error to an error reporting service
+    console.error(error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
-      return this.props.fallback;
+      // You can render any custom fallback UI
+      const { fallback } = this.props;
+      if (fallback) {
+        return fallback;
+      }
+
+      return <h1>Something went wrong...</h1>;
     }
 
     return this.props.children;

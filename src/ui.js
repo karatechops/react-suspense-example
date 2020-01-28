@@ -16,6 +16,7 @@ export function DelaySpinner() {
             visibility: visible;
           }
         }
+
         @keyframes rotation {
           from { transform: rotate(0deg) }
           to { transform: rotate(359deg) }
@@ -26,11 +27,8 @@ export function DelaySpinner() {
   );
 }
 
-export function List({
+export const List = ({
   as: As = React.Fragment,
   items = [],
-  renderItem = item => <div>{item.name}</div>,
-  ...props
-}) {
-  return <As {...props}>{items.map(renderItem)}</As>;
-}
+  renderItem = item => <div>{item.name}</div>
+}) => <As>{items.map(renderItem)}</As>;
